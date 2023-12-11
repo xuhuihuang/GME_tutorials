@@ -152,6 +152,34 @@ class QuasiMSM(object):
                                                           rmse_weighted_by_sp = rmse_weighted_by_sp))
                         
     def predict(self, data, tau_k=None, begin=1, end=None, add_iden_mat=False, ITS=False):
+        """ Use constructed qMSM model to make predictions.
+
+       Parameters
+        ----------
+        data : array like
+            shape = (n_lagtime, n_state^2) or (n_lagtime, n_state, n_state)
+            Time dependent TPMs from \delta t to n_lagtime \delta t.
+        tau_k : int, default: tau_k for fitting
+            the memory decay time used for prediction.
+            No longer than tau_k for fit. 
+        begin : int, default: 1
+            The beginning of the output predictions.
+        end : int, default: the length of input TPMs
+            The end of the output predictions.
+        add_iden_mat : bool, default: False
+            Add the identity matrix to the input TPM at lag time = 0.
+        rmse: bool, default: False
+            Whether calculate implied timescales.
+
+        Returns
+        -------
+        TPM_time : list
+            The corresponding lag times for the predicted TPMs.
+        pre_TPM: array like
+            shape = (end-begin+1, n_state, n_state)
+            The predicted TPMs.
+
+        """
         if tau_k is None:
             tau_k = self._tau_k
         if end is None:
@@ -198,12 +226,6 @@ class QuasiMSM(object):
         return dTPM_dt_0, dTPM_dt
         
     def _compute_K_matrix(self, input_data, add_iden_mat=False):
-        """
-        ----------
-        Returns
-        -------
-        K_matrix: Memory kernel calculation result tensor with cal_step entries.
-        """
         K_matrix = np.zeros((self._tau_k, self._dim, self._dim))
         self._dTPM_dt_0, dTPM_dt = self._compute_dTPM_dt(input_data, add_iden_mat=add_iden_mat)
         K_matrix[0] = (np.linalg.inv(input_data[0]) @ \
@@ -237,11 +259,6 @@ class QuasiMSM(object):
         return mdl
     
 class MSM(object):
-    """
-    
-    ----------
-    
-    """
     def __init__(self):
         self._TPM = []
         self._sp = []
