@@ -1,6 +1,34 @@
+# Author: Yue Wu <wu678@wisc.edu>
+# Contributors: Yunrui Qiu <yunruiqiu@gmail.com>
+# Copyright (c) 2023, University of Wisconsin-Madison and the authors
+# All rights reserved.
+
+"""quasi-Markov State Model (qMSM)
+The theory of qMSM (https://doi.org/10.1063/5.0010787):
+"""
+
 import numpy as np
 
 def preprocess(data, onlyone=False):
+    """ Preprocess the input time-dependent TPMs
+
+        Parameters
+        ----------
+        data : array like
+            shape = (n_lagtime, n_state^2) or (n_lagtime, n_state, n_state)
+            Time dependent TPMs from \delta t to n_lagtime \delta t.
+        onlyone : bool, default: False
+            Set it True if there is only a single TPM in the input data. 
+
+        Returns
+        -------
+        dim : int
+            The dimension of the macrostate model.
+        reshaped_data: array like
+            shape = (n_lagtime, n_state, n_state).
+            Row-normalized TPMs.
+
+        """
     if onlyone:
         if np.ndim(data)==1: 
             data = data.reshape(1, len(data[0]))
@@ -44,10 +72,21 @@ def compute_ITS(lag, TPM):
     return ITS
         
 class QuasiMSM(object):
-    """
-    
+    """ quasi-Markov State Model
+
+    Attributes
     ----------
-    
+    K : array like, shape = (tau_k, n_state, n_state)
+        The time-dependent memory kernel matrix
+    mik : list
+        The time-dependent integral memory kernel computed with tau_k from 1 to the given tau_k.
+        The last term responds to the mik with the given tau_k for fitting.
+    rmse : list
+        The time-dependent root mean square error between input and qMSM predictions
+        computed with tau_k from 1 to the given tau_k for fitting.
+    sp : list
+        The stational population for the macrostates.
+
     """
     def __init__(self):
         self._K_matrix = []
@@ -76,14 +115,26 @@ class QuasiMSM(object):
         return self._sp
     
     def fit(self, data, tau_k, delta_t=1, add_iden_mat=False, rmse=True, rmse_weighted_by_sp=True):
-        """
-        rmse_range will have a little difference between add_iden_mat or not
-        rmse_range is a list
+        """ Construct an qMSM model based on the input data
 
-        Returns
-        -------
-  
-        """  
+       Parameters
+        ----------
+        data : array like
+            shape = (n_lagtime, n_state^2) or (n_lagtime, n_state, n_state)
+            Time dependent TPMs from \delta t to n_lagtime \delta t 
+        tau_k : int
+            the memory decay time, in unit of frame
+        delta_t : float, default: 1
+            The interval for each frame in the input TPMs
+        add_iden_mat : bool, default: False
+            Add the identity matrix to the input TPM at lag time = 0
+        rmse: bool, default: True
+            Whether calculate rmse or not.
+            To save time, it can be set False.
+        rmse_weighted_by_sp : bool, default: True
+            Allow RMSE weighted by stationary populations
+
+        """
         self._dim, input_TPM = preprocess(data)
         if np.ndim(input_TPM) != 3:
             raise IOError("Transition Probablity Matrix is not valid to do qMSM")
