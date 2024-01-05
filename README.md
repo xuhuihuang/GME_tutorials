@@ -13,6 +13,9 @@ There are step-by-step Jupyter notebooks that build GME-based non-Markovian dyna
 4. Construction of Microstate-MSM. [link to notebook](tutorials/alanine_dipeptide/MicroMSM.ipynb) In this Jupyter notebook, Dimensionality Reduction, Geometric Clustering, and Microstate-MSM are included.
 5. Construction of Macrostate-GME Model. [link to notebook](tutorials/alanine_dipeptide/MacroGME.ipynb) In this Jupyter notebook, Kinetic Lumping, Macrostate-qMSM, Macrostate-IGME, and Macrostate-MSM are included.
 
+The colab notebook for the alanine dipeptide system is available: 
+[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1YatQSdyJqf4oyJDYzdqdjfuE0xUkY9MR?usp=sharing)</br>
+
 **For the villin headpiece system:**
 
 We apply two independent methods for Dimensioanality Reduction: tICA and SRVs. Either one is fine for this system. The Jupyter notebooks are as follows:
