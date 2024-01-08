@@ -385,6 +385,13 @@ def map_data(data, device=None):
     """
 
     with torch.no_grad():
+        for _data in data:
+            if isinstance(_data, torch.Tensor):
+                _data = _data.to(device=device)
+            else:
+                _data = torch.from_numpy(np.asarray(_data, dtype=np.float32).copy()).to(device=device)
+            yield _data
+    '''
         if not isinstance(data, (list, tuple)):
             data = [data]
         else:
@@ -394,6 +401,7 @@ def map_data(data, device=None):
                 else:
                     _data = torch.from_numpy(np.asarray(_data, dtype=np.float32).copy()).to(device=device)
                 yield _data
+    '''
 
                 
 def set_random_seed(random_seed):
@@ -625,6 +633,7 @@ class deep_projector(object):
             with torch.no_grad():
                 __pastdata = None; __futuredata = None
                 for __past_data, __future_data in dataloader:
+                    __past_data=__past_data.to(device=self._device); __future_data=__future_data.to(self._device)
                     if __pastdata != None and __futuredata != None:
                         __pastdata = torch.cat((__pastdata, self.lobe(__past_data)), dim=0)
                         __futuredata = torch.cat((__futuredata, self.lobe(__future_data)), dim=0)
@@ -632,14 +641,14 @@ class deep_projector(object):
                         __pastdata = self.lobe(__past_data); __futuredata = self.lobe(__future_data)
 
                 pastmean = torch.mean(__pastdata, dim=0); futuremean = torch.mean(__futuredata, dim=0)
-                mean = ((pastmean + futuremean) / 2).detach().numpy()
+                mean = ((pastmean + futuremean) / 2).detach().cpu().numpy()
                 c00, c0t, ctt = covariance(pastdata=__pastdata, futuredata=__futuredata, remove_mean=True)
                 _, ct0, ctt = covariance(pastdata=__futuredata, futuredata=__pastdata, remove_mean=True)
 
                 c0 = (c00 + ctt) / 2
                 ct = (c0t + ct0) / 2
 
-                c0 = c0.numpy(); ct = ct.numpy()
+                c0 = c0.cpu().numpy(); ct = ct.cpu().numpy()
                 eigenval, eigenvecs = scipy.linalg.eigh(ct, b=c0)
                 index = np.argsort(eigenval)[::-1]
                 eigenval = eigenval[index]
@@ -683,7 +692,7 @@ class deep_projector(object):
             rev_propogator = reverse_propogator(pastdata=_pastproject, futuredata=_futureproject, epsilon=self.__epsilon, 
                                                 method=self.__covariance_method)
             _eigenval, _ = torch.linalg.eigh(rev_propogator)
-            self._srvnet_train_eigenvals.append((self.__step, torch.flip(_eigenval[-int(_pastproject.shape[1]):], dims=[0]).detach().numpy()))
+            self._srvnet_train_eigenvals.append((self.__step, torch.flip(_eigenval[-int(_pastproject.shape[1]):], dims=[0]).detach().cpu().numpy()))
         self.__step +=1
 
         return self
@@ -720,7 +729,7 @@ class deep_projector(object):
                                                     epsilon=self.__epsilon, method=self.__covariance_method)
                 _eigenval, _ = torch.linalg.eigh(rev_propogator)
                 _eigenval = torch.flip(_eigenval[-int(_val_pastproject.shape[1]):], dims=[0]).detach()
-                return -_val_score.item(), _eigenval.numpy()
+                return -_val_score.item(), _eigenval.cpu().numpy()
             else:
                 return -_val_score.item()
     
