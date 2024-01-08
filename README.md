@@ -57,3 +57,6 @@ You may contact Yue Wu wu678@wisc.edu/ Siqin Cao scao66@wisc.edu in case you hav
 
 You may contact D. E. Shaw Research for the MD data of the villine headpiece.
 
+The featurized MD trajectories of the alanine dipeptide system can be downloaded [here](https://uwmadison.box.com/shared/static/xemwq0f2mbpob19el6xxlvca8gl45f9v).
+
+The featurized MD trajectories of villin headpiece after feature selection (with Spectral OASIS) can be downloaded [here](https://uwmadison.box.com/shared/static/1y12gymo0tkc5dn3nihhqwzikxa8wzen).
