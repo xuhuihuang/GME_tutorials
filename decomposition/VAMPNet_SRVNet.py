@@ -418,6 +418,9 @@ def set_random_seed(random_seed):
     random.seed(random_seed)
     np.random.seed(random_seed)
     os.environ['PYTHONHASHSEED'] = str(random_seed)
+    torch.use_deterministic_algorithms(True)
+    os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+    os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":16:8"
 
 
 class Network_Model(object):
