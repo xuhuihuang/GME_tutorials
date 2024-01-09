@@ -50,7 +50,9 @@ You can also use install from PyPI (This installation method works for Python 3.
 
 	pip install msmbuilder2022
 
-For PyEMMA installation, you may refer to http://pyemma.org. And we recommend creating a new environment to install PyEMMA in case of any conflicts with MSMBuilder.
+For PyEMMA installation, you may refer to http://pyemma.org. And we recommend creating a new environment to install PyEMMA in case of any conflicts with MSMBuilder. The installation in conda environment:
+
+	conda install pyemma 
 
 ### Contact Information
 You may contact Yue Wu wu678@wisc.edu/ Siqin Cao scao66@wisc.edu in case you have any specific questions on the model construction or the original MD data of the alanine dipeptide.
