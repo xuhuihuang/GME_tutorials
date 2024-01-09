@@ -38,6 +38,9 @@ We apply two independent methods for Dimensioanality Reduction: tICA and SRVs. E
    
    Analysis after SRVs: [link to notebook](tutorials/villin_headpiece/SRVs_MicroMSM.ipynb)
 
+The colab notebook for the villin headpiece system is available: 
+[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JNV_3N1oe1M9qdSB7dBHt_-DYK2W4T0h?usp=sharing)</br>
+   
 
 ### Installation
 We use [MSMBuilder2022](https://github.com/msmbuilder/msmbuilder2022) and [PyEMMA](https://github.com/markovmodel/PyEMMA/) 2.5.12 in our tutorial.
