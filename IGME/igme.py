@@ -521,7 +521,7 @@ class IGME(object) :
         ind_rmse = numpy.argsort(dic['rmse'])
         ret = self._init_output_dic()
         temp = IGME()
-        n_out = 0
+        n_out = 1
         #for i in range(n_rec) :
         for i in range(total_rec) :
             if numpy.min(numpy.real(dic['timescales'][ind_rmse[i]])) < min_its:
