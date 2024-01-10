@@ -534,7 +534,7 @@ class IGME(object) :
                 temp._from_output(dic, ind_rmse[i])
                 temp.output(ret)
                 n_out += 1
-            if n_out > n_rec:
+            if n_out >= n_rec:
                 break
         return ret
 
