@@ -214,10 +214,10 @@ class spectral_oasis(object):
     def __test_trajs_matrix(self, trajs, lagtime=None):
         
         if trajs is None and self._matrix is None:
-            raise ValueError("At least one of the matrix or trajectories need to be the input to perform spectral-oasis;")
+            raise ValueError("As least one of the matrix or trajectories need to be the input to perform spectral-oasis;")
         
         ## Input the matrix to do nystrom algorithm
-        if not self._matrix is None:
+        if not self._matrix == None:
             if trajs is None:
                 diff = 0
             else:
