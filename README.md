@@ -14,7 +14,7 @@ You'll find below step-by-step Jupyter notebooks that guide the construction of 
 5. Construction of Macrostate-GME Model. [link to notebook](tutorials/alanine_dipeptide/MacroGME.ipynb) In this Jupyter notebook, Kinetic Lumping, Macrostate-qMSM, Macrostate-IGME, and Macrostate-MSM are included.
 
 The colab notebook for the alanine dipeptide system is available: 
-[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1YatQSdyJqf4oyJDYzdqdjfuE0xUkY9MR?usp=sharing)</br>
+[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/xuhuihuang/GME_tutorials/blob/main/tutorials/alanine_dipeptide_tutorial.ipynb)</br>
 
 **B. For the villin headpiece system:**
 
@@ -39,7 +39,7 @@ We apply two independent methods for Dimensionality Reduction: tICA and SRVs. Ei
    Analysis after SRVs: [link to notebook](tutorials/villin_headpiece/SRVs_MicroMSM.ipynb)
 
 The colab notebook for the villin headpiece system is available: 
-[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JNV_3N1oe1M9qdSB7dBHt_-DYK2W4T0h?usp=sharing)</br>
+[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/xuhuihuang/GME_tutorials/blob/main/tutorials/villin_headpiece_tutorial.ipynb)</br>
    
 
 ### Installation Guide:
