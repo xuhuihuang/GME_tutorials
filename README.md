@@ -4,9 +4,9 @@
 Tutorials for non-Markovian dynamic models (qMSM and IGME) to study protein dynamics.
 
 ### Content
-There are step-by-step Jupyter notebooks that build GME-based non-Markovian dynamic models (qMSM and IGME) in two peptide systems: the alanine dipeptide and villin headpiece.
+You'll find below step-by-step Jupyter notebooks that guide the construction of GME-based non-Markovian dynamic models (qMSM and IGME) in two peptide systems: the alanine dipeptide and villin headpiece.
 
-**For the alanine dipeptide system:**
+**A. For the alanine dipeptide system:**
 
 1. Featurization. [link to notebook](tutorials/alanine_dipeptide/Featurization.ipynb)
 3. Cross-validation with GMRQ. [link to notebook](tutorials/alanine_dipeptide/Cross_Validation.ipynb)
@@ -16,9 +16,9 @@ There are step-by-step Jupyter notebooks that build GME-based non-Markovian dyna
 The colab notebook for the alanine dipeptide system is available: 
 [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1YatQSdyJqf4oyJDYzdqdjfuE0xUkY9MR?usp=sharing)</br>
 
-**For the villin headpiece system:**
+**B. For the villin headpiece system:**
 
-We apply two independent methods for Dimensioanality Reduction: tICA and SRVs. Either one is fine for this system. The Jupyter notebooks are as follows:
+We apply two independent methods for Dimensionality Reduction: tICA and SRVs. Either one is fine for this system. The Jupyter notebooks are as follows:
 
 1. Featurization. [link to notebook](tutorials/villin_headpiece/Featurization.ipynb)
 2. Feature Selection (by Spectral OASIS). [link to notebook](tutorials/villin_headpiece/Feature_Selection.ipynb)
@@ -42,7 +42,7 @@ The colab notebook for the villin headpiece system is available:
 [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JNV_3N1oe1M9qdSB7dBHt_-DYK2W4T0h?usp=sharing)</br>
    
 
-### Installation
+### Installation Guide:
 We use [MSMBuilder2022](https://github.com/msmbuilder/msmbuilder2022) and [PyEMMA](https://github.com/markovmodel/PyEMMA/) 2.5.12 in our tutorial.
 
 For MSMbuilder2022, you can use the Anaconda installation (This installation method is not applicable when the Python version is greater than 3.9):
@@ -53,12 +53,12 @@ You can also use install from PyPI (This installation method works for Python 3.
 
 	pip install msmbuilder2022
 
-For PyEMMA installation, you may refer to http://pyemma.org. And we recommend creating a new environment to install PyEMMA in case of any conflicts with MSMBuilder. The installation in conda environment:
+For PyEMMA installation, you may refer to http://pyemma.org. And we recommend creating a new environment to install PyEMMA in case of any conflicts with MSMBuilder. The installation in a conda environment:
 
 	conda install pyemma 
 
 ### Contact Information
-You may contact Yue Wu wu678@wisc.edu/ Siqin Cao scao66@wisc.edu in case you have any specific questions on the model construction or the original MD data of the alanine dipeptide.
+You may contact Yue Wu wu678@wisc.edu/ Siqin Cao scao66@wisc.edu if you have any specific questions on the model construction or the original MD data of the alanine dipeptide.
 
 You may contact D. E. Shaw Research for the MD data of the villine headpiece.
 
