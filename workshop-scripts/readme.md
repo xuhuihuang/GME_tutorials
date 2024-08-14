@@ -16,5 +16,5 @@ The colab notebook for the HP35 example system (GME) is available:
 [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/xuhuihuang/GME_tutorials/blob/main/workshop-scripts/villin_headpiece_GME_exercise.ipynb)</br>
 
 ## SRVs/VAMPnets
-The colab notebook for the HP35 example system (GME) is available: 
+The colab notebook for the HP35 example system (SRVs/VAMPnets) is available: 
 [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/xuhuihuang/GME_tutorials/blob/main/workshop-scripts/villin_headpiece_SRVs.ipynb)</br>
